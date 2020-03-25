@@ -9,13 +9,24 @@ test.before(t => {
 
 test('GET /', async t => {
   const { agent } = t.context
-  const status = 200
-  const data = 'It works!'
   
 	const res = await agent
 		.get('/')
 		.send({})
   
-  t.is(res.status, status)
-	t.deepEqual(res.body, { status, data })
+  t.is(res.status, 200)
+	t.truthy(res.body.data)
+})
+
+test('GET /something', async t => {
+  const { agent } = t.context
+  
+	const res = await agent
+		.get('/something')
+		.send({})
+  
+  t.is(res.status, 404)
+  t.is(res.body.status, 404)
+  t.truthy(res.body.error)
+  t.falsy(res.body.data)
 })
