@@ -1,15 +1,15 @@
 const express = require('express')
+const sessionMiddleware = require('./session.middleware')
+const logger = require('./logger')
 
 const app = express()
 
-const logger = {
-  info: data => console.log(data)
-}
+app.use(sessionMiddleware)
 
 app.get('/', (req, res) => {
   const status = 200
   const data = 'It works!'
-  // logger.info(data)
+  logger.info(data)
   res.status(status).json({ status, data })
 })
 

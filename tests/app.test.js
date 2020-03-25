@@ -3,15 +3,16 @@ const request = require('supertest')
 const app = require('../src/app')
 
 test.before(t => {
-  t.context = { app }
+  const agent = request.agent(app)
+  t.context = { agent, app }
 })
 
 test('GET /', async t => {
-  const { app } = t.context
+  const { agent } = t.context
   const status = 200
   const data = 'It works!'
   
-	const res = await request(app)
+	const res = await agent
 		.get('/')
 		.send({})
   
