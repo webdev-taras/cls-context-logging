@@ -1,0 +1,31 @@
+{
+  "name": "cls-context-logging",
+  "version": "0.0.1",
+  "description": "example",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "npm run test:ava",
+    "test:ava": "ava",
+    "test:watch": "ava --watch",
+    "test:cover": "nyc ava"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "ava": "^1.4.1",
+    "nyc": "^14.1.1",
+    "supertest": "^4.0.2"
+  },
+  "ava": {
+    "files": "**/*.test.js",
+    "babel": false,
+    "compileEnhancements": false
+  },
+  "nyc": {
+    "exclude": "tests"
+  }
+}
