@@ -43,7 +43,22 @@ test('GET /test', async t => {
   const data = res.body.data
   t.is(res.status, 200)
   t.is(data.id, id)
-	t.truthy(data.result)
+  t.truthy(data.sessionId)
+	t.true(Array.isArray(data.results))
+})
+
+test('GET /test returns sessionId for all results', async t => {
+  const { agent } = t.context
+
+  const id = 1
+  const delay = 100
+  
+	const res = await agent
+		.get('/test', )
+		.query({ id, delay })
+  
+  const data = res.body.data
+	t.true(data.results.every(result => result === data.sessionId))
 })
 
 test('GET /something and receive the error', async t => {

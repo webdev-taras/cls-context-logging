@@ -10,6 +10,8 @@ const requestIdMiddleware = (req, res, next) => {
     logger.info(`req.params:`, req.params)
     logger.info(`req.query:`, req.query)
     logger.info(`req.body:`, req.body)
+    req.sessionId = sessionId
+    res.results = []
     next()
   })
 }

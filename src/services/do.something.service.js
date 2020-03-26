@@ -9,8 +9,7 @@ const pause = time =>
 
 const doSomething = (params) => {
   const { id = 0, delay = 0 } = params
-  result = `completed with id = ${id}`
-  logger.info(`doSomething.params:`, params)
+  const result = logger.debug(`doSomething.id:`, id)
   return pause(delay)(result)
 }
 
