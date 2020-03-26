@@ -12,13 +12,41 @@ test('GET /', async t => {
   
 	const res = await agent
 		.get('/')
-		.send({})
+		.query({})
   
   t.is(res.status, 200)
 	t.truthy(res.body.data)
 })
 
-test('GET /something', async t => {
+test('POST /echo', async t => {
+  const { agent } = t.context
+  const message = 'hello'
+  
+	const res = await agent
+		.post('/echo')
+		.send({ message })
+  
+  t.is(res.status, 200)
+	t.is(res.body.data, message)
+})
+
+test('GET /test', async t => {
+  const { agent } = t.context
+
+  const id = 1
+  const delay = 100
+  
+	const res = await agent
+		.get('/test', )
+		.query({ id, delay })
+  
+  const data = res.body.data
+  t.is(res.status, 200)
+  t.is(data.id, id)
+	t.truthy(data.result)
+})
+
+test('GET /something and receive the error', async t => {
   const { agent } = t.context
   
 	const res = await agent
