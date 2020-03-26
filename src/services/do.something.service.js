@@ -9,8 +9,8 @@ const pause = time =>
 
 const doSomething = (params) => {
   const { id = 0, delay = 0 } = params
-  const result = logger.debug(`doSomething.id:`, id)
-  return pause(delay)(result)
+  return pause(delay)(id)
+    .then(id => logger.debug(`doSomething.id:`, id))
 }
 
 module.exports = doSomething

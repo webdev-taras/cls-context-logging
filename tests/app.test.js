@@ -41,6 +41,7 @@ test('GET /test', async t => {
 		.query({ id, delay })
   
   const data = res.body.data
+
   t.is(res.status, 200)
   t.is(data.id, id)
   t.truthy(data.sessionId)
@@ -58,7 +59,26 @@ test('GET /test returns sessionId for all results', async t => {
 		.query({ id, delay })
   
   const data = res.body.data
+
 	t.true(data.results.every(result => result === data.sessionId))
+})
+
+test('GET /test returns different sessionId for each request', async t => {
+  const { agent } = t.context
+
+  const delays = [100, 500, 200, 400, 250]
+
+  const calls = delays.map((delay, id) =>
+    agent
+      .get('/test', )
+      .query({ id, delay })
+  )
+  
+  const responses = await Promise.all(calls)
+  const data = responses.map(res => res.body.data)
+  const sessions = data.map(data => data.results.every(result => result === data.sessionId))
+  
+	t.true(sessions.every(session => session))
 })
 
 test('GET /something and receive the error', async t => {
