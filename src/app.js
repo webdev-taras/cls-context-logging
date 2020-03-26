@@ -1,7 +1,8 @@
 const express = require('express')
 
 const {
-  bodyParser,
+  urlencodedParser,
+  jsonParser,
   session,
   response,
   error,
@@ -13,12 +14,10 @@ const {
   test,
 } = require('./controllers')
 
-const logger = require('./logger')
-
 const app = express()
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(urlencodedParser)
+app.use(jsonParser)
 
 app.use(session)
 
