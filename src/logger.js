@@ -1,14 +1,14 @@
 const { namespase } = require('./services/cls')
 
 const logger = {
-  info: (...data) => console.log(`[${namespase.get('sessionId')}]`, ...data),
+  info: (...data) => console.log(`[${namespase.get('transactionId')}]`, ...data),
   debug: (...data) => {
-    const sessionId = namespase.get('sessionId')
-    console.log(`[${sessionId}]`, ...data)
-    return sessionId
+    const transactionId = namespase.get('transactionId')
+    console.log(`[${transactionId}]`, ...data)
+    return transactionId
   },
   error: (err) => {
-    console.error(`[${namespase.get('sessionId')}] ERROR`)
+    console.error(`[${namespase.get('transactionId')}] ERROR`)
     console.error(err)
   },
 }

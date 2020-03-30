@@ -3,7 +3,7 @@ const express = require('express')
 const {
   urlencodedParser,
   jsonParser,
-  session,
+  transaction,
   response,
   error,
 } = require('./middlewares')
@@ -19,7 +19,7 @@ const app = express()
 app.use(urlencodedParser)
 app.use(jsonParser)
 
-app.use(session)
+app.use(transaction)
 
 app.get('/', hello)
 app.post('/echo', echo)

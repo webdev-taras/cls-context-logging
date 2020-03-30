@@ -44,11 +44,11 @@ test('GET /test', async t => {
 
   t.is(res.status, 200)
   t.is(data.id, id)
-  t.truthy(data.sessionId)
+  t.truthy(data.transactionId)
 	t.true(Array.isArray(data.results))
 })
 
-test('GET /test returns sessionId for all results', async t => {
+test('GET /test returns transactionId for all results', async t => {
   const { agent } = t.context
 
   const id = 1
@@ -60,10 +60,10 @@ test('GET /test returns sessionId for all results', async t => {
   
   const data = res.body.data
 
-	t.true(data.results.every(result => result === data.sessionId))
+	t.true(data.results.every(result => result === data.transactionId))
 })
 
-test('GET /test returns different sessionId for each request', async t => {
+test('GET /test returns different transactionId for each request', async t => {
   const { agent } = t.context
 
   const delays = [100, 500, 200, 400, 250]
@@ -76,9 +76,9 @@ test('GET /test returns different sessionId for each request', async t => {
   
   const responses = await Promise.all(calls)
   const data = responses.map(res => res.body.data)
-  const sessions = data.map(data => data.results.every(result => result === data.sessionId))
+  const transactions = data.map(data => data.results.every(result => result === data.transactionId))
   
-	t.true(sessions.every(session => session))
+	t.true(transactions.every(transaction => transaction))
 })
 
 test('GET /something and receive the error', async t => {

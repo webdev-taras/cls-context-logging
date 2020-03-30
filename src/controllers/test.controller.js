@@ -4,7 +4,7 @@ const logger = require('../logger')
 module.exports = (req, res, next) => {
   const id = Number(req.query.id) || 0
   const delay = Number(req.query.delay) || 0
-  const sessionId = req.sessionId
+  const transactionId = req.transactionId
 
   const uuid = logger.debug(`doSomething.id:`, id)
   res.results.push(uuid)
@@ -17,7 +17,7 @@ module.exports = (req, res, next) => {
     .then(result => {
       res.results.push(result)
       res.statusCode = 200
-      res.data = { id, sessionId, results: res.results }
+      res.data = { id, transactionId, results: res.results }
       next()
     })
     .catch(next)

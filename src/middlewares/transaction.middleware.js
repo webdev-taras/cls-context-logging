@@ -4,13 +4,13 @@ const logger = require('../logger')
 
 const requestIdMiddleware = (req, res, next) => {
   namespase.run(() => {
-    const sessionId = uuidv4()
-    namespase.set('sessionId', sessionId)
+    const transactionId = uuidv4()
+    namespase.set('transactionId', transactionId)
     logger.info(`req.path:`, req.path)
     logger.info(`req.params:`, req.params)
     logger.info(`req.query:`, req.query)
     logger.info(`req.body:`, req.body)
-    req.sessionId = sessionId
+    req.transactionId = transactionId
     res.results = []
     next()
   })
