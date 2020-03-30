@@ -4,6 +4,7 @@ const {
   urlencodedParser,
   jsonParser,
   transaction,
+  winston,
   logger,
   response,
   error,
@@ -21,6 +22,7 @@ app.use(urlencodedParser)
 app.use(jsonParser)
 
 app.use(transaction)
+app.use(winston)
 app.use(logger)
 
 app.get('/', hello)
