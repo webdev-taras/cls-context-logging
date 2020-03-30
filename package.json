@@ -1,7 +1,7 @@
 {
   "name": "cls-context-logging",
   "version": "0.0.1",
-  "description": "example",
+  "description": "example of embedding transactionId to logging request using cls and async hooks",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -10,13 +10,26 @@
     "test:watch": "ava --watch",
     "test:cover": "nyc ava"
   },
-  "author": "",
+  "keywords": [
+    "transaction",
+    "transaction",
+    "logging request",
+    "cls",
+    "continuation local storage",
+    "async hooks",
+    "middleware"
+  ],
+  "author": {
+    "name" : "Taras Panasiuk",
+    "email" : "webdev.taras@gmail.com"
+  },
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cls-hooked": "^4.2.2",
     "express": "^4.17.1",
     "http-errors": "^1.7.3",
+    "morgan": "^1.10.0",
     "uuid": "^7.0.2"
   },
   "devDependencies": {

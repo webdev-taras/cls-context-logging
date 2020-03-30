@@ -4,6 +4,7 @@ const {
   urlencodedParser,
   jsonParser,
   transaction,
+  logger,
   response,
   error,
 } = require('./middlewares')
@@ -20,6 +21,7 @@ app.use(urlencodedParser)
 app.use(jsonParser)
 
 app.use(transaction)
+app.use(logger)
 
 app.get('/', hello)
 app.post('/echo', echo)

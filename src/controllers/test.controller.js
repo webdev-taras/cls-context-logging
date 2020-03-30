@@ -5,9 +5,14 @@ module.exports = (req, res, next) => {
   const id = Number(req.query.id) || 0
   const delay = Number(req.query.delay) || 0
   const transactionId = req.transactionId
-
   const uuid = logger.debug(`doSomething.id:`, id)
-  res.results.push(uuid)
+
+  logger.info(`req.path:`, req.path)
+  logger.info(`req.params:`, req.params)
+  logger.info(`req.query:`, req.query)
+  logger.info(`req.body:`, req.body)
+
+  res.results = [uuid]
   
   doSomething({ id, delay })
     .then(result => {
