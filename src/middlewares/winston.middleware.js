@@ -1,7 +1,19 @@
 const { createLogger, format, transports } = require('winston')
+const { namespase } = require('../services/cls')
+
+const formatTransactionId = format((info) => {
+  const transactionId = namespase.get('transactionId')
+  if (transactionId) {
+    info.message = `[${transactionId}] ${info.message}`
+  }
+  return info
+})
 
 const logger = createLogger({
-  format: format.simple(),
+  format: format.combine(
+    formatTransactionId(),
+    format.simple(),
+  ),
   transports: [new transports.Console()],
   exitOnError: false,
 })
