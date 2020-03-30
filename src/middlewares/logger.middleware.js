@@ -1,12 +1,14 @@
 const morgan = require('morgan')
-const { namespase } = require('../services/cls')
 
 // module.exports = morgan('tiny')
 
+morgan.token('transactionId', function (req) {
+  return `[${req.transactionId}]`
+})
+
 module.exports = morgan(function (tokens, req, res) {
-  const transactionId = namespase.get('transactionId')
   return [
-    `[${transactionId}]`,
+    tokens.transactionId(req, res),
     tokens.method(req, res),
     tokens.url(req, res),
     tokens.status(req, res),
