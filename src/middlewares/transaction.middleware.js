@@ -1,7 +1,7 @@
 const { namespase } = require('../shared/cls')
 const { v4: uuidv4 } = require('uuid')
 
-const requestIdMiddleware = (req, res, next) => {
+const transactionIdMiddleware = (req, res, next) => {
   namespase.bind(req)
   namespase.bind(res)
 
@@ -13,4 +13,4 @@ const requestIdMiddleware = (req, res, next) => {
   })
 }
 
-module.exports = requestIdMiddleware
+module.exports = transactionIdMiddleware
