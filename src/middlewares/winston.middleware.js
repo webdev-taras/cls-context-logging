@@ -1,5 +1,5 @@
 const { createLogger, format, transports } = require('winston')
-const { namespase } = require('../services/cls')
+const { namespase } = require('../shared/cls')
 
 const formatTransactionId = format((info) => {
   const transactionId = namespase.get('transactionId')

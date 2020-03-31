@@ -1,5 +1,5 @@
 const createError = require('http-errors')
-const logger = require('../logger')
+const logger = require('../shared/logger')
 
 const responseMiddleware = (req, res, next) => {
   const { statusCode: status = 200, data } = res

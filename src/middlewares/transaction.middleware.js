@@ -1,4 +1,4 @@
-const { namespase } = require('../services/cls')
+const { namespase } = require('../shared/cls')
 const { v4: uuidv4 } = require('uuid')
 
 const requestIdMiddleware = (req, res, next) => {

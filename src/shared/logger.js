@@ -1,4 +1,4 @@
-const { namespase } = require('./services/cls')
+const { namespase } = require('./cls')
 
 const logger = {
   info: (...data) => console.log(`[${namespase.get('transactionId')}]`, ...data),

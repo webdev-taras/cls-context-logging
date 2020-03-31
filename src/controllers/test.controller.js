@@ -1,5 +1,5 @@
 const doSomething = require('../services/do.something.service')
-const logger = require('../logger')
+const logger = require('../shared/logger')
 
 module.exports = (req, res, next) => {
   const id = Number(req.query.id) || 0

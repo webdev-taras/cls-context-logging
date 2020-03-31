@@ -5,7 +5,7 @@ const {
   jsonParser,
   transaction,
   winston,
-  logger,
+  morgan,
   response,
   error,
 } = require('./middlewares')
@@ -23,7 +23,7 @@ app.use(jsonParser)
 
 app.use(transaction)
 app.use(winston)
-app.use(logger)
+app.use(morgan)
 
 app.get('/', hello)
 app.post('/echo', echo)
