@@ -1,16 +1,35 @@
 const express = require('express')
 
+const {
+  urlencodedParser,
+  jsonParser,
+  transaction,
+  winston,
+  morgan,
+  response,
+  error,
+} = require('./middlewares')
+
+const {
+  hello,
+  echo,
+  test,
+} = require('./controllers')
+
 const app = express()
 
-const logger = {
-  info: data => console.log(data)
-}
+app.use(urlencodedParser)
+app.use(jsonParser)
 
-app.get('/', (req, res) => {
-  const status = 200
-  const data = 'It works!'
-  // logger.info(data)
-  res.status(status).json({ status, data })
-})
+app.use(transaction)
+app.use(winston)
+app.use(morgan)
+
+app.get('/', hello)
+app.post('/echo', echo)
+app.get('/test', test)
+
+app.use(response)
+app.use(error)
 
 module.exports = app
